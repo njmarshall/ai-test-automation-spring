@@ -1,0 +1,23 @@
+aitest:
+  llm:
+    base-url: https://api.anthropic.com
+    model: claude-sonnet-4-6
+    max-tokens: 4096
+    # Prefer the environment variable. Leave blank to force AITEST_LLM_API_KEY resolution.
+    api-key: ${AITEST_LLM_API_KEY:}
+    anthropic-version: 2023-06-01
+
+  # One entry per API server the suite can target in a single run.
+  servers:
+    - name: healthcare
+      base-url: ${HEALTHCARE_BASE_URL:http://localhost:8081}
+      api-key: ${HEALTHCARE_TOKEN:}
+    - name: insurance
+      base-url: ${INSURANCE_BASE_URL:http://localhost:8082}
+      api-key: ${INSURANCE_TOKEN:}
+
+  poll:
+    max-attempts: 20
+    initial-delay-millis: 500
+    max-delay-millis: 15000
+    multiplier: 2.0

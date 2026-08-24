@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Prior Authorization API
+  version: 1.0.0
+  description: Minimal prior authorization API used as input for AI test generation.
+paths:
+  /prior-authorizations:
+    post:
+      operationId: submitPriorAuthorization
+      summary: Submit a new prior authorization request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PriorAuthorization'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriorAuthorization'
+        '400':
+          description: Validation error
+  /prior-authorizations/{id}:
+    get:
+      operationId: getPriorAuthorization
+      summary: Fetch the current state of a prior authorization
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriorAuthorization'
+        '404':
+          description: Not found
+components:
+  schemas:
+    PriorAuthorization:
+      type: object
+      required:
+        - patientId
+        - memberId
+        - procedureCode
+        - diagnosisCode
+      properties:
+        id:
+          type: string
+        patientId:
+          type: string
+        memberId:
+          type: string
+        procedureCode:
+          type: string
+        diagnosisCode:
+          type: string
+        status:
+          type: string
+          enum: [RECEIVED, PENDING, IN_REVIEW, APPROVED, DENIED, CANCELLED]
