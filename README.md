@@ -1,3 +1,7 @@
-# ai-test-automation-spring
+# AI Test Automation — Spring Boot
 
-AI-native API test automation on Java 21 and Spring Boot.
+Spring Boot version of the AI test automation framework.
+Mirrors the Python framework architecture.
+
+## Status
+Scaffolding in progress — actively being built.
