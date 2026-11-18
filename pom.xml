@@ -55,9 +55,9 @@
              Jetty and Jackson do not clash with Spring Boot's own. -->
         <dependency>
             <groupId>org.wiremock</groupId>
-            <artifactId>wiremock-standalone</artifactId>
+            <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
-            <scope>test</scope>
+            <scope>test</scope>    
         </dependency>
     </dependencies>
 
