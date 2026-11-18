@@ -20,7 +20,6 @@
     <properties>
         <java.version>21</java.version>
         <swagger-parser.version>2.1.22</swagger-parser.version>
-        <wiremock.version>3.9.2</wiremock.version>
     </properties>
 
     <dependencies>
@@ -47,16 +46,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- WireMock: a real local HTTP server for integration tests.
-             The "standalone" artifact is a shaded fat jar, so its bundled
-             Jetty and Jackson do not clash with Spring Boot's own. -->
-        <dependency>
-            <groupId>org.wiremock</groupId>
-            <artifactId>wiremock-standalone</artifactId>
-            <version>${wiremock.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
